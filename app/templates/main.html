@@ -9,6 +9,20 @@
 
     <body>
         <h1>Calendar working</h1>
+        <form method="POST" action="/">
+          {{ form.csrf_token }}
+          {{ form.name.label }} {{ form.name }}
+          {{ form.start_date.label }} {{ form.start_date }}
+          {{ form.start_time.label }} {{ form.start_time }}
+          {{ form.end_date.label }} {{ form.end_date }}
+          {{ form.end_time.label }} {{ form.end_time }}
+          {{ form.description.label }} {{ form.description }}
+          {{ form.private.label }} {{ form.private }}
+
+          {{ form.submit }}
+
+
+        </form>
         <table>
             <thead>
               <tr>
@@ -18,15 +32,15 @@
               </tr>
             </thead>
             <tbody>
+              {% for id, name, start_datetime, end_datetime in rows %}
                 <tr>
                     <!-- loop here to create rows -->
-                    {% for id, name, start_datetime, end_datetime in rows %}
                     <!-- use strftime to format date objects -->
                     <td>{{ name }}</td>
                     <td>{{ start_datetime.strftime("%H:%M")}}</td>
                     <td>{{ end_datetime.strftime("%H:%M")}}</td>
-                    {% endfor %}
                 </tr>
+              {% endfor %}
             </tbody>
           </table>
     </body>
