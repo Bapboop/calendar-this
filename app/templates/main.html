@@ -9,6 +9,26 @@
 
     <body>
         <h1>Calendar working</h1>
+        <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Start</th>
+                <th>End</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <!-- loop here to create rows -->
+                    {% for id, name, start_datetime, end_datetime in rows %}
+                    <!-- use strftime to format date objects -->
+                    <td>{{ name }}</td>
+                    <td>{{ start_datetime.strftime("%H:%M")}}</td>
+                    <td>{{ end_datetime.strftime("%H:%M")}}</td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+          </table>
     </body>
 
 </html>

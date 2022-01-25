@@ -15,12 +15,16 @@ CONNECTION_PARAMETERS = {
 def main():
   with psycopg2.connect(**CONNECTION_PARAMETERS) as conn:
     with conn.cursor() as curs:
-      curs.execute(
-        """
-        SELECT id, name, start_datetime, end_datetime
-        FROM appointments
-        ORDER BY start_datetime;
-        """)
-      results = curs.fetchall()
+      def get_appoint():
+        curs.execute(
+          """
+          SELECT id, name, start_datetime, end_datetime
+          FROM appointments
+          ORDER BY start_datetime;
+          """)
+        return curs.fetchall()
+        
+      results = get_appoint()
+      print(results)
 
   return render_template("main.html", rows=results)
