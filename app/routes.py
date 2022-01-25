@@ -21,6 +21,6 @@ def main():
         FROM appointments
         ORDER BY start_datetime;
         """)
-        results = curs.fetchall()
+      results = curs.fetchall()
 
   return render_template("main.html", rows=results)

@@ -1,1 +1,1 @@
-FLASK_APP=calender_this
+FLASK_APP=calendar_this
