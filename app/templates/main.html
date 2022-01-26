@@ -16,7 +16,7 @@
             {% endfor %}
           </ul>
         {% endif %}
-        <form method="POST" action="/">
+        <form method="POST" action="">
           {{ form.csrf_token }}
           {{ form.name.label }} {{ form.name }}
           {{ form.start_date.label }} {{ form.start_date }}
